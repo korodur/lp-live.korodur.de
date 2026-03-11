@@ -2,18 +2,19 @@
 
 KORODUR Landing Pages auf eigener Subdomain via GitHub Pages.
 
-**Live-URL:** https://lp-live.korodur.de
-
 ## Landing Pages
 
-| Seite | URL |
-|-------|-----|
-| Rapid Set ASPHALT REPAIR MIX | https://lp-live.korodur.de/arm/ |
-| MICROTOP TW Trinkwasser | https://lp-live.korodur.de/microtop-tw/ |
+| Seite | Temporaere URL (funktioniert jetzt) | Finale URL (nach DNS-Setup) |
+|-------|--------------------------------------|----------------------------|
+| Rapid Set ARM | [GitHub Pages](https://korodur.github.io/lp-live.korodur.de/arm/) | https://lp-live.korodur.de/arm/ |
+| MICROTOP TW | [GitHub Pages](https://korodur.github.io/lp-live.korodur.de/microtop-tw/) | https://lp-live.korodur.de/microtop-tw/ |
 
-## Setup-Anleitung (IT)
+## Setup-Anleitung
 
-### Schritt 1: DNS-Eintrag (IT-Admin bei Domain-Provider)
+GitHub Pages ist bereits aktiviert (Branch `main`, Root `/`).
+Es fehlen noch **2 Schritte**, damit die Seiten unter `lp-live.korodur.de` erreichbar sind:
+
+### Schritt 1: DNS-Eintrag anlegen (Domain-Provider / DNS-Admin)
 
 Einen **CNAME-Record** anlegen:
 
@@ -24,30 +25,29 @@ Ziel:  korodur.github.io
 TTL:   3600 (oder Standard)
 ```
 
-Das heisst: `lp-live.korodur.de` zeigt auf `korodur.github.io`.
+> Hinweis: Aenderungen koennen bis zu 24h dauern, sind aber meistens in wenigen Minuten aktiv.
 
-### Schritt 2: GitHub Pages aktivieren (Repo-Settings)
+### Schritt 2: Custom Domain in GitHub eintragen
 
-1. Repo oeffnen: https://github.com/korodur/lp-live.korodur.de
-2. **Settings** > **Pages** (linke Sidebar)
-3. **Source**: "Deploy from a branch" > Branch `main` / Ordner `/ (root)` > **Save**
-4. **Custom domain**: `lp-live.korodur.de` eingeben > **Save**
-5. Warten bis DNS verifiziert (kann bis zu 24h dauern, meistens Minuten)
-6. **Enforce HTTPS** aktivieren (Checkbox erscheint nach DNS-Verifizierung)
+1. https://github.com/korodur/lp-live.korodur.de/settings/pages oeffnen
+2. Unter **"Custom domain"**: `lp-live.korodur.de` eingeben > **Save**
+3. Warten bis "DNS check successful" erscheint (gruenes Haekchen)
+4. **"Enforce HTTPS"** aktivieren (Checkbox erscheint nach DNS-Verifizierung)
 
-### Schritt 3: Pruefen
+### Pruefen
 
-- https://lp-live.korodur.de/arm/ sollte die ARM Landing Page zeigen
-- https://lp-live.korodur.de/microtop-tw/ sollte die MICROTOP TW Landing Page zeigen
+Nach beiden Schritten sollten diese URLs funktionieren:
+- https://lp-live.korodur.de/arm/
+- https://lp-live.korodur.de/microtop-tw/
 
 ## Struktur
 
 ```
 arm/
   index.html              # Rapid Set ASPHALT REPAIR MIX Landing Page
-  assets/                 # Bilder, Logo, Berater-Fotos
+  assets/                 # Bilder, Logo, Berater-Fotos (19 Dateien)
 microtop-tw/
   index.html              # MICROTOP TW Landing Page
-  img/                    # Bilder, Logo, Referenzfotos
+  img/                    # Bilder, Logo, Referenzfotos (14 Dateien)
 CNAME                     # GitHub Pages Custom Domain Config
 ```
