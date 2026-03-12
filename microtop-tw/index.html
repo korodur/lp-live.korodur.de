@@ -66,7 +66,7 @@
       "name": "Welche DVGW-Zulassungen hat MICROTOP TW?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Alle 8 MICROTOP TW Produkte sind DVGW-zugelassen. TW 3, TW 5, TW 8, TW NSM, TW BM und TW 02 nach Typ Klasse 1, W 300 und W 347. TW VSM nach Typ Klasse 1, W 347. TW Mineral ist DVGW-geeignet f\u00fcr Trinkwasseranlagen."
+        "text": "Die MICROTOP TW Produkte TW 3, TW 5, TW 8, TW NSM, TW BM und TW 02 sind DVGW-zugelassen nach Typ Klasse 1, W 300 und W 347. TW Mineral ist zugelassen nach W 347. TW VSM ist derzeit ohne DVGW-Zulassung. Erg\u00e4nzend: NEODUR VM basic (Vergussm\u00f6rtel) ist gepr\u00fcft nach DVGW W 347."
       }
     },
     {
@@ -301,6 +301,17 @@ header nav a:hover { color: var(--secondary); text-decoration: none; }
 .produkt-card-name a { color: var(--secondary); }
 .produkt-card-detail { font-size: .85rem; color: #5a6a7a; }
 
+/* ===== NEODUR VM BASIC ===== */
+.neodur-card { background: var(--white); border-radius: var(--card-radius); padding: 32px; box-shadow: var(--shadow); border-left: 4px solid var(--secondary); }
+.neodur-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+.neodur-card-header h3 { color: var(--primary); font-size: 1.3rem; margin-bottom: 0; }
+.neodur-badge { display: inline-block; font-size: .8rem; font-weight: 700; background: var(--secondary); color: var(--white); padding: 4px 12px; border-radius: 20px; }
+.neodur-card p { font-size: .95rem; color: #5a6a7a; }
+.neodur-details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+.neodur-detail { display: flex; flex-direction: column; font-size: .9rem; }
+.neodur-label { font-weight: 700; font-size: .8rem; text-transform: uppercase; color: #5a6a7a; margin-bottom: 2px; }
+.neodur-features { display: flex; flex-wrap: wrap; gap: 12px 24px; font-size: .9rem; font-weight: 700; color: var(--success); }
+
 /* ===== DVGW ===== */
 .dvgw-box { background: var(--white); border: 2px solid var(--secondary); border-radius: var(--card-radius); padding: 40px; box-shadow: 0 4px 24px rgba(0,158,227,.1); }
 .dvgw-box h3 { color: var(--secondary); font-size: 1.3rem; margin-bottom: 20px; }
@@ -394,6 +405,8 @@ footer a:hover { color: var(--white); }
   .mini-trust { margin-top: var(--section-pad-m); }
   .inline-cta { flex-direction: column; text-align: center; }
   .dvgw-box { padding: 24px; }
+  .neodur-details { grid-template-columns: 1fr; }
+  .neodur-card { padding: 24px; }
   body { padding-bottom: 56px; }
 }
 @media (max-width: 480px) {
@@ -724,6 +737,38 @@ footer a:hover { color: var(--white); }
 </div>
 </section>
 
+<!-- ==================== NEODUR VM BASIC ==================== -->
+<section id="neodur" class="bg-gray">
+<div class="container">
+<h2>Erg&auml;nzend: Vergussarbeiten im Trinkwasserbereich</h2>
+<p class="section-intro">F&uuml;r Verguss- und Montagearbeiten in Trinkwasseranlagen bietet KORODUR ein eigenes Produkt &ndash; ebenfalls DVGW-gepr&uuml;ft.</p>
+
+<div class="neodur-card">
+<div class="neodur-card-header">
+<h3>NEODUR VM basic</h3>
+<span class="neodur-badge">DVGW W 347</span>
+</div>
+<p>Mineralischer, hochflie&szlig;f&auml;higer Quellvergussbeton f&uuml;r kraftschl&uuml;ssige Vergussarbeiten und Montagen aller Art. Gepr&uuml;ft gem. DVGW-Arbeitsblatt W 347 f&uuml;r hygienische Anforderungen in Trinkwasserbereichen.</p>
+<div class="neodur-details">
+<div class="neodur-detail"><span class="neodur-label">K&ouml;rnung</span><span>0&ndash;5 mm</span></div>
+<div class="neodur-detail"><span class="neodur-label">Verarbeitung</span><span>Mischen + Pumpen / Gie&szlig;en</span></div>
+<div class="neodur-detail"><span class="neodur-label">Lieferform</span><span>25 kg Gebinde</span></div>
+<div class="neodur-detail"><span class="neodur-label">Norm</span><span>DAfStb VeBMR &middot; C55/67</span></div>
+</div>
+<div class="neodur-features">
+<span>&#10003; Schrumpffrei</span>
+<span>&#10003; Schnellabbindend</span>
+<span>&#10003; Frost- &amp; tausalzbest&auml;ndig</span>
+<span>&#10003; Wasserundurchl&auml;ssig</span>
+<span>&#10003; Chloridfrei</span>
+</div>
+<div style="margin-top:20px;">
+<a href="https://www.korodur.de/wp-content/uploads/NEODUR_VM_basic_de.pdf" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:10px 24px;font-size:.9rem;">Datenblatt (PDF) &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
 <!-- ==================== DREIFACH-VERGLEICH ==================== -->
 <section id="vergleich" class="bg-gray">
 <div class="container">
@@ -778,8 +823,9 @@ footer a:hover { color: var(--white); }
 <h3>Vollst&auml;ndige DVGW-Zulassungs&uuml;bersicht</h3>
 <table class="dvgw-table">
 <tr><td>TW 3, TW 5, TW 8, TW NSM, TW BM, TW 02</td><td>Typ Klasse 1 &middot; W 300 &middot; W 347</td></tr>
-<tr><td>TW VSM</td><td>Typ Klasse 1 &middot; W 347</td></tr>
-<tr><td>TW Mineral</td><td>DVGW-geeignet f&uuml;r Trinkwasseranlagen</td></tr>
+<tr><td>TW Mineral</td><td>W 347</td></tr>
+<tr><td>TW VSM</td><td>Derzeit ohne DVGW-Zulassung</td></tr>
+<tr><td>NEODUR VM basic (Vergussm&ouml;rtel)</td><td>W 347</td></tr>
 </table>
 <p class="dvgw-normen">Gepr&uuml;ft vom Hygiene-Institut des Ruhrgebiets. Keine bioverf&uuml;gbaren Inhaltsstoffe. Entspricht DIN EN 13892-2, DIN 18551, DIN EN 13670 / DIN 1045-3. Zertifiziert nach DIN EN ISO 9001:2015.</p>
 </div>
@@ -798,7 +844,7 @@ footer a:hover { color: var(--white); }
 
 <div class="faq-item">
 <button class="faq-question" aria-expanded="false">Welche DVGW-Zulassungen hat MICROTOP TW?</button>
-<div class="faq-answer"><div class="faq-answer-inner">Alle 8 <strong>MICROTOP TW</strong> Produkte sind DVGW-zugelassen. TW 3, TW 5, TW 8, TW NSM, TW BM und TW 02 nach Typ Klasse 1, W 300 und W 347. TW VSM nach Typ Klasse 1, W 347. TW Mineral ist DVGW-geeignet f&uuml;r Trinkwasseranlagen.</div></div>
+<div class="faq-answer"><div class="faq-answer-inner">Die <strong>MICROTOP TW</strong> Produkte TW 3, TW 5, TW 8, TW NSM, TW BM und TW 02 sind DVGW-zugelassen nach Typ Klasse 1, W 300 und W 347. TW Mineral ist zugelassen nach W 347. TW VSM ist derzeit ohne DVGW-Zulassung. Erg&auml;nzend bieten wir <strong>NEODUR VM basic</strong> (Vergussm&ouml;rtel), gepr&uuml;ft nach DVGW W 347.</div></div>
 </div>
 
 <div class="faq-item">
