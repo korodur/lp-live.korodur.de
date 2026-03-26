@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KORODUR Space Health Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header__brand">
+        <span class="header__title">KORODUR<span class="header__dot">.</span> SPACE HEALTH</span>
+      </div>
+      <div>
+        <span id="header-meta" class="header__meta">Wird geladen...</span>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar" aria-label="Snapshot-Navigation">
+      <div class="sidebar__section-title">Snapshots</div>
+      <ul id="snapshot-list" class="sidebar__list">
+        <li style="padding:20px;color:var(--muted);font-size:.85rem;">Lade...</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main" class="main">
+      <div class="loading">
+        <div class="loading__spinner"></div>
+        Lade Dashboard...
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
