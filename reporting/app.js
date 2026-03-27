@@ -40,13 +40,19 @@ async function discoverSnapshots() {
       availableSnapshots = await res.json();
     }
   } catch {
-    // Fallback: try common dates
+    // Fallback: try recent weeks
     const now = new Date();
     const candidates = [];
     for (let i = 0; i < 12; i++) {
-      const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-      candidates.push(key);
+      const d = new Date(now.getTime() - i * 7 * 24 * 60 * 60 * 1000);
+      // ISO week calculation
+      const tmp = new Date(d.getTime());
+      tmp.setDate(tmp.getDate() + 3 - ((tmp.getDay() + 6) % 7));
+      const jan4 = new Date(tmp.getFullYear(), 0, 4);
+      const week = 1 + Math.round(((tmp - jan4) / 86400000 - 3 + ((jan4.getDay() + 6) % 7)) / 7);
+      const isoYear = tmp.getFullYear();
+      const key = `${isoYear}-W${String(week).padStart(2, '0')}`;
+      if (!candidates.includes(key)) candidates.push(key);
     }
 
     for (const key of candidates) {
@@ -93,17 +99,23 @@ function renderSidebar() {
   }
 
   list.innerHTML = availableSnapshots.map((key, i) => {
-    const [year, month] = key.split('-');
-    const monthName = MONTHS_DE[parseInt(month, 10) - 1];
-    const label = i === 0 ? 'Aktuell' : '';
+    let labelText;
+    if (key.includes('-W')) {
+      const [year, weekPart] = key.split('-W');
+      labelText = `KW ${parseInt(weekPart, 10)} ${year}`;
+    } else {
+      const [year, month] = key.split('-');
+      labelText = `${MONTHS_DE[parseInt(month, 10) - 1]} ${year}`;
+    }
+    const badge = i === 0 ? 'Aktuell' : '';
 
     return `
       <li>
         <a class="sidebar__item ${i === 0 ? 'active' : ''}"
            data-key="${key}"
            onclick="loadSnapshot('${key}')">
-          ${monthName} ${year}
-          ${label ? `<span class="sidebar__item-date">${label}</span>` : ''}
+          ${labelText}
+          ${badge ? `<span class="sidebar__item-date">${badge}</span>` : ''}
         </a>
       </li>
     `;
@@ -115,9 +127,15 @@ function updateHeaderMeta(key) {
   const el = document.getElementById('header-meta');
   if (!el || !currentSnapshot) return;
 
-  const [year, month] = key.split('-');
-  const monthName = MONTHS_DE[parseInt(month, 10) - 1];
-  el.textContent = `Snapshot: ${monthName} ${year}`;
+  let display;
+  if (key.includes('-W')) {
+    const [year, weekPart] = key.split('-W');
+    display = `KW ${parseInt(weekPart, 10)} ${year}`;
+  } else {
+    const [year, month] = key.split('-');
+    display = `${MONTHS_DE[parseInt(month, 10) - 1]} ${year}`;
+  }
+  el.textContent = `Snapshot: ${display}`;
 }
 
 // ─── Render Dashboard ────────────────────────────────
